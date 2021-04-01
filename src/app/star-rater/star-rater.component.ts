@@ -2,15 +2,15 @@ import { Component, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-  selector: 'gr-star-rater',
+  selector: ' gr-star-rater',
   templateUrl: './star-rater.component.html',
   styleUrls: ['./star-rater.component.less'],
-  providers: [     
+  providers: [
     {
-      provide: NG_VALUE_ACCESSOR, 
+      provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => StarRaterComponent),
-      multi: true     
-    }   
+      multi: true
+    }
   ]
 })
 export class StarRaterComponent implements ControlValueAccessor {
@@ -35,23 +35,24 @@ export class StarRaterComponent implements ControlValueAccessor {
       stars: 5,
       text: '10/10 would write review on Amazon'
     }
-  ]
+  ];
   public disabled: boolean;
   public ratingText: string;
-  public _value: number;
+  public value: number;
 
-  onChanged: any = () => {}
-  onTouched: any = () => {}
+  onChanged: any = () => {};
+  onTouched: any = () => {};
 
   writeValue(val) {
-    this._value = val;
+    this.value = val;
   }
 
-  registerOnChange(fn: any){
-    this.onChanged = fn
+  registerOnChange(fn: any) {
+    this.onChanged = fn;
   }
-  registerOnTouched(fn: any){
-    this.onTouched = fn
+
+  registerOnTouched(fn: any) {
+    this.onTouched = fn;
   }
 
   setDisabledState(isDisabled: boolean): void {
@@ -59,9 +60,9 @@ export class StarRaterComponent implements ControlValueAccessor {
   }
 
   setRating(star: any) {
-    if(!this.disabled) {
-      this._value = star.stars;
-      this.ratingText = star.text
+    if (!this.disabled) {
+      this.value = star.stars;
+      this.ratingText = star.text;
       this.onChanged(star.stars);
       this.onTouched();
     }

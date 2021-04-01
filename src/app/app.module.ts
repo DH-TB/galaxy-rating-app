@@ -6,12 +6,14 @@ import { StarRaterComponent } from './star-rater/star-rater.component';
 import { TypeaheadComponent } from './typeahead/typeahead.component';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { UserInfoComponent } from './user-info/user-info.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StarRaterComponent,
-    TypeaheadComponent
+    TypeaheadComponent,
+    UserInfoComponent
   ],
   imports: [
     BrowserModule,

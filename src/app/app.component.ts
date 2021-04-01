@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.galaxyService.getGalaxies().subscribe((res) => {
       this.galaxies = res;
-    })
+    });
     this.createForm();
     this.onFormChanges();
   }
@@ -26,17 +26,17 @@ export class AppComponent implements OnInit {
     this.galaxyForm = new FormGroup({
       galaxy: new FormControl({value: null, disabled: false}, [Validators.required]),
       rating: new FormControl({value: null, disabled: true}, [Validators.required]),
-      name: new FormControl({value: null, disabled: false}, [Validators.required])
+      name: new FormControl({value: null, disabled: false}, [Validators.required]),
+      user: new FormControl({value: null, disabled: false}, [Validators.required])
     });
   }
 
   onFormChanges() {
     this.galaxyForm.get('galaxy').valueChanges.subscribe((val) => {
-      let ratingControl = this.galaxyForm.get('rating')
-      if(val) {
+      const ratingControl = this.galaxyForm.get('rating');
+      if (val) {
         ratingControl.enable();
-      }
-      else {
+      } else {
         ratingControl.patchValue(null);
         ratingControl.disable();
       }
